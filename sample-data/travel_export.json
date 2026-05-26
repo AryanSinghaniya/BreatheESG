@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "trip_id": "TR-1001",
+      "trip_type": "flight",
+      "segment_origin": "JFK",
+      "segment_destination": "LHR",
+      "distance": 5540,
+      "distance_unit": "mi",
+      "cost": 1890,
+      "currency": "USD",
+      "booking_date": "2026-01-05",
+      "traveler": "Jordan Lee"
+    },
+    {
+      "trip_id": "TR-1002",
+      "trip_type": "hotel",
+      "segment_origin": "BER",
+      "segment_destination": "BER",
+      "distance": 0,
+      "distance_unit": "km",
+      "cost": 940,
+      "currency": "EUR",
+      "booking_date": "2026-01-12",
+      "traveler": "Amira Khan"
+    },
+    {
+      "trip_id": "TR-1003",
+      "trip_type": "rail",
+      "segment_origin": "PAR",
+      "segment_destination": "AMS",
+      "distance": 430,
+      "distance_unit": "km",
+      "cost": 210,
+      "currency": "EUR",
+      "booking_date": "2026-01-19",
+      "traveler": "Luca Rossi"
+    },
+    {
+      "trip_id": "TR-1004",
+      "trip_type": "flight",
+      "segment_origin": "SFO",
+      "segment_destination": "",
+      "distance": 7420,
+      "distance_unit": "mi",
+      "cost": 3120,
+      "currency": "USD",
+      "booking_date": "2026-01-21",
+      "traveler": "Priya Nair"
+    }
+  ]
+}

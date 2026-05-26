@@ -1,0 +1,4 @@
+meter_id,billing_period_start,billing_period_end,kwh,tariff,location
+NYC-8871,2025-12-16,2026-01-15,84250,TOU-Commercial,New York DC
+CHI-4439,2026-01-01,2026-01-31,-120,Flat-Industrial,Chicago Plant
+BER-2210,2026-01-10,2026-02-09,109500,PeakDemand,Berlin HQ
