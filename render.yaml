@@ -18,7 +18,7 @@ services:
         fromDatabase:
           name: breathe-db
           property: connectionString
-  - type: static_site
+  - type: static site
     name: breathe-frontend
     env: static
     plan: free
