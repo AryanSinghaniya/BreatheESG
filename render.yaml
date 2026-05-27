@@ -19,13 +19,13 @@ services:
         fromDatabase:
           name: breathe-db
           property: connectionString
-  - type: static site
+  - type: web
     name: breathe-frontend
-    env: static
+    env: node
     plan: free
     rootDir: frontend
-    buildCommand: npm install ; npm run build
-    staticPublishPath: dist
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
     envVars:
       - key: VITE_API_URL
         sync: false
