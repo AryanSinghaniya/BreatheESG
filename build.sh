@@ -8,3 +8,4 @@ pip install -r requirements.txt
 # Run database migrations
 cd backend
 python manage.py migrate
+python manage.py collectstatic --noinput
