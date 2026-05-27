@@ -6,4 +6,5 @@ set -o errexit
 pip install -r requirements.txt
 
 # Run database migrations
+cd backend
 python manage.py migrate
