@@ -4,7 +4,7 @@ services:
     name: breathe-backend
     env: python
     plan: free
-    buildCommand: pip install -r backend/requirements.txt
+    buildCommand: pip install -r backend/requirements.txt; python backend/manage.py collectstatic --noinput
     startCommand: gunicorn backend.wsgi:application --chdir backend
     envVars:
       - key: DJANGO_SECRET_KEY
