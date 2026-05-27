@@ -1,5 +1,7 @@
-from pathlib import Path
 import os
+import logging
+from pathlib import Path
+
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -7,8 +9,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-only-secret")
 DEBUG = os.getenv("DJANGO_DEBUG", "true").lower() == "true"
 
-allowed_hosts = os.getenv("ALLOWED_HOSTS", "").split(",") if not DEBUG else ["*"]
-ALLOWED_HOSTS = [host.strip() for host in allowed_hosts if host.strip()]
+default_allowed_hosts = [
+    "localhost",
+    "127.0.0.1",
+    "breathe-backend-oapp.onrender.com",
+]
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
+else:
+    allowed_hosts = os.getenv("ALLOWED_HOSTS", "")
+    env_hosts = [host.strip() for host in allowed_hosts.split(",") if host.strip()]
+    ALLOWED_HOSTS = sorted(set(default_allowed_hosts + env_hosts))
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -26,6 +37,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "ingestion.middleware.RequestLoggingMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -91,5 +103,14 @@ REST_FRAMEWORK = {
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
-    cors_origins = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+    cors_origins = os.getenv("CORS_ALLOWED_ORIGINS", "https://breathe-frontend.onrender.com").split(",")
     CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins if origin.strip()]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://breathe-frontend.onrender.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+logging.basicConfig(level=logging.INFO)
+

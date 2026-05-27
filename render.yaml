@@ -5,7 +5,7 @@ services:
     env: python
     plan: free
     buildCommand: ./build.sh
-    startCommand: gunicorn backend.wsgi:application --chdir backend
+    startCommand: gunicorn backend.wsgi:application --chdir backend --bind 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SECRET_KEY
         sync: false
